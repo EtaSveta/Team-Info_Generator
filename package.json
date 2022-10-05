@@ -1,0 +1,22 @@
+{
+  "name": "team-info-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EtaSveta/Team-Info_Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EtaSveta/Team-Info_Generator/issues"
+  },
+  "homepage": "https://github.com/EtaSveta/Team-Info_Generator#readme",
+  "devDependencies": {
+    "jest": "^29.1.2"
+  }
+}
