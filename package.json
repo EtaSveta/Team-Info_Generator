@@ -18,5 +18,8 @@
   "homepage": "https://github.com/EtaSveta/Team-Info_Generator#readme",
   "devDependencies": {
     "jest": "^29.1.2"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.4"
   }
 }
