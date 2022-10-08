@@ -11,7 +11,7 @@ function createEmployees(employees) {
                 <div class="card-body text-dark">
                     <ul class="list-group">
                         <li class="list-group-item ">ID ${manager.id}</li>
-                        <li class="list-group-item">Email: ${manager.email}</li>
+                        <li class="list-group-item">Email: <span id="email"><a href="mailto:${manager.email}">${manager.email}</a></span></li>
                         <li class="list-group-item">Office Number ${manager.officeNumber}</li>
                     </ul>
                 </div>        
@@ -20,18 +20,56 @@ function createEmployees(employees) {
         totalTeamMembers.push(managerCard);
     }
 
+    const createEngineer = engineer => {
+        let engineerCard = 
+        `<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">
+            <h2>Engineer</h2>
+            <h3><i class='fas fa-glasses'></i> ${engineer.name}</h3>
+        </div>
+        <div class="card-body text-dark">
+            <ul class="list-group">
+                <li class="list-group-item ">ID ${engineer.id}</li>
+                <li class="list-group-item">Email: <span id="email"><a href="mailto:${engineer.email}">${engineer.email}</a></span></li>
+                <li class="list-group-item">Github: <a target="_blank" href="https://github.com/${engineer.github}">${engineer.github}</a></li>
+            </ul>
+        </div>        
+    </div> 
+        `;
+        totalTeamMembers.push(engineerCard);
+    }
+
+    const createIntern = intern => {
+        let internCard = 
+        `<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">
+                    <h2>Manager</h2>
+                    <h3><i class='fas fa-coffee'></i> ${intern.name}</h3>
+                </div>
+                <div class="card-body text-dark">
+                    <ul class="list-group">
+                        <li class="list-group-item ">ID ${intern.id}</li>
+                        <li class="list-group-item">Email: <span id="email"><a href="mailto:${intern.email}">${intern.email}</a></span></li>
+                        <li class="list-group-item">School ${intern.school}</li>
+                    </ul>
+                </div>        
+            </div> 
+        `;
+        totalTeamMembers.push(internCard);
+    }
+
     for (let i = 0; i < employees.length; i++) {
         if (employees[i].getRole() === 'Manager') {
             createManager(employees[i]);
         }
+        if (employees[i].getRole() === 'Engineer') {
+            createEngineer(employees[i]);
+        }
+        if (employees[i].getRole() === 'Intern') {
+            createIntern(employees[i]);
+        }
     }
-
-    
     return totalTeamMembers.join('');
-
-    
-    
-
 
 }
 
