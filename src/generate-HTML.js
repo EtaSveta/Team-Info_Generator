@@ -10,9 +10,9 @@ function createEmployees(employees) {
                 </div>
                 <div class="card-body text-dark">
                     <ul class="list-group">
-                        <li class="list-group-item ">ID </li>
-                        <li class="list-group-item">Email: </li>
-                        <li class="list-group-item">Office Number </li>
+                        <li class="list-group-item ">ID ${manager.id}</li>
+                        <li class="list-group-item">Email: ${manager.email}</li>
+                        <li class="list-group-item">Office Number ${manager.officeNumber}</li>
                     </ul>
                 </div>        
             </div> 
@@ -22,10 +22,11 @@ function createEmployees(employees) {
 
     for (let i = 0; i < employees.length; i++) {
         if (employees[i].getRole() === 'Manager') {
-            createManager(employees[i])
+            createManager(employees[i]);
         }
     }
 
+    
     return totalTeamMembers.join('');
 
     

@@ -68,37 +68,47 @@ const promptManager = () => {
         const manager = new Manager(data.name, data.id, data.email, data.officeNumber);
         team.push(manager);
         console.log(team)
-        // promptTeamGen();
-        generateEmployees(data)
+        addTeamMembers();
     })
-    .then((data) => {
-        const genEmp = generateEmployees(data)
-        console.log(genEmp);
-        return writeFile(genEmp);
-    })
+    // .then((data) => {
+    //     const genEmp = generateEmployees(team)
+    //     console.log(genEmp);
+    //     return finishTeam(genEmp);
+    // })
     .catch((error) => {
         console.log(error);
     })
 };
 
+const addTeamMembers = () => {
+    return inquirer.prompt([
+        {
+            type: 'list',
+            name: 'addMoreEmployees',
+            message: 'Would you like to add more employees to the team?',
+            choices: ['Engineer','Intern', 'No, build website']
+        }
+    ]) 
+    .then(choice => {
+        switch (choice.addMoreEmployees) {
+            case 'Engineer':
+                promptEngineer();
+                break; 
+            case 'Intern':
+                promptIntern();
+                break;
+            case 'No':
+                finishTeam();
+        }
+    })   
+}
 
-const writeFile = fileContent => {
-    return new Promise((resolve, reject) => {
-        fs.writeFile('./dist/index.html', fileContent, err => {
-            // if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
-            if (err) {
-              reject(err);
-              // return out of the function here to make sure the Promise doesn't accidentally execute the resolve() function as well
-              return;
-            }
+function finishTeam() {
+    fs.writeFile('./dist/index.html', generateEmployees(team), err => {
+        if (err) throw err;
       
-            // if everything went well, resolve the Promise and send the successful data to the `.then()` method
-            resolve({
-              ok: true,
-              message: 'File created!'
-            });
-        });
-    });
+        console.log('HTML created');
+      });
 };
 
 promptManager();
