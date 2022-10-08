@@ -1,6 +1,6 @@
 
   # Team Info Generator
-
+  ![image](https://user-images.githubusercontent.com/109307665/194729536-3f888946-6051-40e1-b97b-03f781c51a59.png)
   
 
   ## Table of Content
